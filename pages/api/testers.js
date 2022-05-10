@@ -1,5 +1,6 @@
-const Tester = require('../../database/tester')
-const {connectDB, disconnectBD} = require('../../database')
+var mongoose = require('mongoose')
+const Tester = mongoose.model('tester')
+const { connectDB, disconnectDB } = require('../../database')
 const createOne = () => {
   module.exports.createOne = catchAsync(async (req, res) => {
     let tester = await Tester.findOne({ username: req.body.email })
@@ -31,23 +32,21 @@ const EditOne = async (req, res) => {
   return res.json(tester)
 }
 export default async function handler(req, res) {
-  
-await connectDB()
-switch (req.method) {
-case 'POST': 
-await createOne(req, res)
-break
-case 'PATCH':
-  await EditOne(req, res)
-  break
-case "GET": 
-if (req.query.id === undefined) {
-await getAll(req, res)
-}else{
-    await getOne(req, res)
-   }
-}
+  await connectDB()
+  switch (req.method) {
+    case 'POST':
+      await createOne(req, res)
+      break
+    case 'PATCH':
+      await EditOne(req, res)
+      break
+    case 'GET':
+      if (req.query.id === undefined) {
+        await getAll(req, res)
+      } else {
+        await getOne(req, res)
+      }
+  }
 
-await disconnectBD()
- 
+  await disconnectDB()
 }
