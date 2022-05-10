@@ -7,7 +7,10 @@ const CountdownTimer = () => {
   const Ref = useRef(null)
 
   // The state for our timer
-  const [timer, setTimer] = useState('00:00:00:00')
+  const [days, setDays] = useState('00')
+  const [hours, setHours] = useState('00')
+  const [minutes, setMinutes] = useState('00')
+  const [seconds, setSeconds] = useState('00')
 
   const getTimeRemaining = (e) => {
     const total = Date.parse(e) - Date.parse(new Date())
@@ -25,18 +28,15 @@ const CountdownTimer = () => {
   }
 
   const startTimer = (e) => {
-    let { total, hours, minutes, seconds } = getTimeRemaining(e)
+    let { total, days, hours, minutes, seconds } = getTimeRemaining(e)
     if (total >= 0) {
       // update the timer
       // check if less than 10 then we need to
       // add '0' at the begining of the variable
-      setTimer(
-        (hours > 9 ? hours : '0' + hours) +
-          ':' +
-          (minutes > 9 ? minutes : '0' + minutes) +
-          ':' +
-          (seconds > 9 ? seconds : '0' + seconds)
-      )
+      setDays(days > 9 ? days : '0' + days)
+      setHours(hours > 9 ? hours : '0' + hours)
+      setMinutes(minutes > 9 ? minutes : '0' + minutes)
+      setSeconds(seconds > 9 ? seconds : '0' + seconds)
     }
   }
 
@@ -44,7 +44,10 @@ const CountdownTimer = () => {
     // If you adjust it you should also need to
     // adjust the Endtime formula we are about
     // to code next
-    setTimer('00:00:10')
+    setDays('00')
+    setHours('00')
+    setMinutes('00')
+    setSeconds('00')
 
     // If you try to remove this line the
     // updating of timer Variable will be
@@ -57,11 +60,10 @@ const CountdownTimer = () => {
   }
 
   const getDeadTime = () => {
-    let deadline = new Date()
+    let deadline = new Date('05/18/2022 09:00:00')
 
     // This is where you need to adjust if
     // you entend to add more time
-    deadline.setSeconds(deadline.getSeconds() + 10)
     return deadline
   }
 
@@ -74,19 +76,35 @@ const CountdownTimer = () => {
     clearTimer(getDeadTime())
   }, [])
 
-  // Another way to call the clearTimer() to start
-  // the countdown is via action event from the
-  // button first we create function to be called
-  // by the button
-  const onClickReset = () => {
-    clearTimer(getDeadTime())
-  }
-
   return (
-    <div className="App">
-      <h2>{timer}</h2>
-      <button onClick={onClickReset}>Reset</button>
-    </div>
+    <>
+      <div className="my-6 flex flex-wrap justify-between rounded-lg bg-white/30 text-center">
+        <div className="w-1/4 p-4 sm:w-1/4">
+          <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
+            {days}
+          </h2>
+          <p className="text-2xl font-medium text-white">Days</p>
+        </div>
+        <div className="w-1/2 p-4 sm:w-1/4">
+          <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
+            {hours}
+          </h2>
+          <p className="text-2xl font-medium text-white">Hours</p>
+        </div>
+        <div className="w-1/2 p-4 sm:w-1/4">
+          <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
+            {minutes}
+          </h2>
+          <p className="text-2xl font-medium text-white">Minutes</p>
+        </div>
+        <div className="w-1/2 p-4 sm:w-1/4">
+          <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
+            {seconds}
+          </h2>
+          <p className="text-2xl font-medium text-white">Seconds</p>
+        </div>
+      </div>
+    </>
   )
 }
 
