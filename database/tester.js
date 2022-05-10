@@ -8,4 +8,7 @@ const TesterSchema = mongoose.Schema({
   authorized: { type: Boolean, default: true },
 })
 
-module.exports = mongoose.model('tester', TesterSchema)
+const testerScheme =
+  mongoose.models.tester || mongoose.model('tester', TesterSchema)
+
+module.exports = testerScheme

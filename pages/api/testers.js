@@ -1,20 +1,18 @@
-var mongoose = require('mongoose')
-const Tester = mongoose.model('tester')
+const Tester = require('../../database/tester')
 const { connectDB, disconnectDB } = require('../../database')
-const createOne = () => {
-  module.exports.createOne = catchAsync(async (req, res) => {
-    let tester = await Tester.findOne({ username: req.body.email })
-    if (tester)
-      throw new AppError('Thank you very much we already have your email', 401)
 
-    tester = new Tester(req.body)
-    await tester.save()
-    return res.json(tester)
-  })
+const createOne = async (req, res) => {
+  let tester = await Tester.findOne({ email: req.body.email })
+  if (tester)
+    return res.status(401).json('Thank you very much, we already have your email')
+  let myTester = new Tester(req.body)
+  await myTester.save()
+  return res.json(myTester)
 }
 
 const getAll = async (req, res) => {
   const testers = await Tester.find({})
+
   return res.json(testers)
 }
 
@@ -32,7 +30,12 @@ const EditOne = async (req, res) => {
   return res.json(tester)
 }
 export default async function handler(req, res) {
-  await connectDB()
+  try {
+    await connectDB()
+  } catch (e) {
+    console.log(e)
+  }
+
   switch (req.method) {
     case 'POST':
       await createOne(req, res)
@@ -48,5 +51,9 @@ export default async function handler(req, res) {
       }
   }
 
-  await disconnectDB()
+  try {
+    await disconnectDB()
+  } catch (e) {
+    console.log(e)
+  }
 }

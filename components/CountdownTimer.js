@@ -16,8 +16,9 @@ const CountdownTimer = () => {
     const total = Date.parse(e) - Date.parse(new Date())
     const seconds = Math.floor((total / 1000) % 60)
     const minutes = Math.floor((total / 1000 / 60) % 60)
-    const hours = Math.floor(((total / 1000) * 60 * 60) % 24)
+    const hours = Math.floor((total / 1000 / 60 / 60) % 24)
     const days = Math.floor(total / 1000 / 60 / 60 / 24)
+
     return {
       total,
       days,
@@ -78,8 +79,8 @@ const CountdownTimer = () => {
 
   return (
     <>
-      <div className="my-6 flex flex-wrap justify-between rounded-lg bg-white/30 text-center">
-        <div className="w-1/4 p-4 sm:w-1/4">
+      <div className="my-6 flex w-full flex-wrap justify-between rounded-lg bg-white/30 text-center">
+        <div className="w-1/2 p-4 sm:w-1/4">
           <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
             {days}
           </h2>
