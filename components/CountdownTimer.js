@@ -81,25 +81,25 @@ const CountdownTimer = () => {
     <>
       <div className="my-6 flex w-full flex-wrap justify-between rounded-lg bg-white/30 text-center">
         <div className="w-1/2 p-4 sm:w-1/4">
-          <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
+          <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
             {days}
           </h2>
           <p className="text-2xl font-medium text-white">Days</p>
         </div>
         <div className="w-1/2 p-4 sm:w-1/4">
-          <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
+          <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
             {hours}
           </h2>
           <p className="text-2xl font-medium text-white">Hours</p>
         </div>
         <div className="w-1/2 p-4 sm:w-1/4">
-          <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
+          <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
             {minutes}
           </h2>
           <p className="text-2xl font-medium text-white">Minutes</p>
         </div>
         <div className="w-1/2 p-4 sm:w-1/4">
-          <h2 className="title-font text-6xl font-bold text-yellow-500 sm:text-4xl">
+          <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
             {seconds}
           </h2>
           <p className="text-2xl font-medium text-white">Seconds</p>

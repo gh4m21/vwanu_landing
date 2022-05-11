@@ -22,11 +22,11 @@ const Home = () => {
       <main className="mx-auto h-screen w-full max-w-screen-2xl items-center justify-center text-center">
         <div className="ml-auto flex flex-wrap-reverse items-center justify-end px-10 lg:flex-nowrap xl:pl-52">
           <div className="mx-auto pt-24 xl:ml-auto xl:pt-0">
-            <p className="text-center text-3xl font-bold text-yellow-500 md:text-5xl lg:text-4xl xl:text-right xl:text-5xl">
+            <p className="text-center text-3xl font-bold text-v-yellow md:text-5xl lg:text-4xl xl:text-right xl:text-5xl">
               We are Launching Soon
             </p>
             <CountdownTimer />
-            <p className="pb-6 text-3xl  text-yellow-500 md:text-5xl lg:text-4xl xl:text-4xl">
+            <p className="pb-6 text-3xl  text-v-yellow md:text-5xl lg:text-4xl xl:text-4xl">
               join the waiting list
             </p>
             <ModalSubscribers />
