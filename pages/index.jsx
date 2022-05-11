@@ -21,7 +21,14 @@ const Home = () => {
 
       <main className="mx-auto h-screen w-full max-w-screen-2xl items-center justify-center text-center">
         <div className="ml-auto flex flex-wrap-reverse items-center justify-end px-10 lg:flex-nowrap xl:pl-52">
-          <div className="mx-auto pt-24 xl:ml-auto xl:pt-0">
+          <div className="mx-auto pt-16 xl:ml-auto xl:pt-0">
+            <div className=" mb-16">
+              <img
+                className="z-10 mx-auto w-1/2 items-center justify-center rounded-xl object-center lg:w-64"
+                alt="hero"
+                src="/Asset_3.png"
+              />
+            </div>
             <p className="text-center text-3xl font-bold text-v-yellow md:text-5xl lg:text-4xl xl:text-right xl:text-5xl">
               We are Launching Soon
             </p>
