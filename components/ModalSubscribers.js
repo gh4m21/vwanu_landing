@@ -124,9 +124,9 @@ const ModalSubscribers = () => {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          Are you sure you want to deactivate your account? All
-                          of your data will be permanently removed. This action
-                          cannot be undone.
+                          By submit your email, you confirm that you accept to
+                          be a beta tester for Vwanu and to receive any
+                          informations about it.
                         </p>
                       </div>
                       <div className="mt-4">

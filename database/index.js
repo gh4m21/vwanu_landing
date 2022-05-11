@@ -3,7 +3,7 @@ const { DB_URI } = require('../config')
 
 const connect_to_DB = async () => {
   try {
-    await mongoose.connect(DB_URI, {
+    return await mongoose.connect(DB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
@@ -20,4 +20,4 @@ const disconnectDB = async () => {
   await mongoose.disconnect()
 }
 
-module.exports = {connectDB:connect_to_DB, disconnectDB}
+module.exports = { connectDB: connect_to_DB, disconnectDB }

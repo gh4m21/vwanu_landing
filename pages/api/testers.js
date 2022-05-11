@@ -4,10 +4,12 @@ const { connectDB, disconnectDB } = require('../../database')
 const createOne = async (req, res) => {
   let tester = await Tester.findOne({ email: req.body.email })
   if (tester)
-    return res.status(401).json('Thank you very much, we already have your email')
+    return res
+      .status(401)
+      .json('Thank you very much, we already have your email')
   let myTester = new Tester(req.body)
   await myTester.save()
-  return res.json(myTester)
+  return res.redirect(301, '/')
 }
 
 const getAll = async (req, res) => {
