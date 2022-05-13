@@ -1,6 +1,6 @@
 import React, { useState, Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { success, error,errorExist } from '../components/notification'
+import { success, error, errorExist } from '../components/notification'
 import { Toaster } from 'react-hot-toast'
 
 const ModalSubscribers = () => {
@@ -28,7 +28,7 @@ const ModalSubscribers = () => {
   const handleSubmit = (e) => {
     if (formData.firstName && formData.lastName && formData.email) {
       try {
-        fetch('api/testers', {
+        fetch('api/subscribe', {
           method: 'POST',
           headers: {
             Accept: 'application/json, text/plain, */*',
@@ -37,7 +37,7 @@ const ModalSubscribers = () => {
           body: JSON.stringify(formData),
         }).then((res) => {
           if (res.status === 200) {
-            console.log('success', res)
+            console.log('success', res.data)
             success()
             setFormData({ firstName: '', lastName: '', email: '' })
           } else if (res.status === 401) {

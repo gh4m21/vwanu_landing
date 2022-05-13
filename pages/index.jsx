@@ -12,15 +12,15 @@ const Home = () => {
         backgroundRepeat: 'repeat',
         opacity: '1',
       }}
-      className="mx-auto min-h-screen"
+      className=" mx-auto min-h-screen"
     >
       <Head>
         <title>Vwanu | Landing Pages</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="mx-auto h-screen w-full max-w-screen-2xl items-center justify-center text-center">
-        <div className="ml-auto flex flex-wrap-reverse items-center justify-end px-10 lg:flex-nowrap xl:pl-52">
+      <main className="mx-auto h-screen w-full max-w-screen-2xl text-center">
+        <div className="ml-auto flex flex-wrap-reverse items-center px-10 lg:flex-nowrap xl:pl-52">
           <div className="mx-auto pt-16 xl:ml-auto xl:pt-0">
             <div className=" mb-16">
               <img
