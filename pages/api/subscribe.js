@@ -4,7 +4,7 @@ export default function handler(req, res) {
   axios
     .post('http://159.223.144.200:4004/tester', req.body, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json,multipart/form-data',
       },
     })
     .then((data) => {
