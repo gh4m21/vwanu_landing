@@ -2,6 +2,7 @@ import React, { useState, Fragment, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { success, error, errorExist } from '../components/notification'
 import { Toaster } from 'react-hot-toast'
+import { sendMail } from '../services/sendMail'
 
 const ModalSubscribers = () => {
   const [showModal, setShowModal] = useState(false)
@@ -25,6 +26,11 @@ const ModalSubscribers = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const sendEmail = async (formData) => {
+    let response = await sendMail(formData)
+    console.log(response)
+  }
+
   const handleSubmit = (e) => {
     if (formData.firstName && formData.lastName && formData.email) {
       try {
@@ -37,7 +43,8 @@ const ModalSubscribers = () => {
           body: JSON.stringify(formData),
         }).then((res) => {
           if (res.status === 200) {
-            console.log('success', res.data)
+            let isSent = sendEmail(formData)
+            console.log('Sent? ', isSent)
             success()
             setFormData({ firstName: '', lastName: '', email: '' })
           } else if (res.status === 401) {

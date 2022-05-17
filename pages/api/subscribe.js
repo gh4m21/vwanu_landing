@@ -11,7 +11,6 @@ export default function handler(req, res) {
       res.status(200).json({ message: 'Success', data: data.data })
     })
     .catch((err) => {
-      console.log('err', err)
       if (err?.response?.status === 401) {
         res.status(401).json({ message: 'Error', data: err?.response?.data })
       } else {
