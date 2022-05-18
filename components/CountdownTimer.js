@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 
-const CountdownTimer = () => {
+const CountdownTimer = ({ fn }) => {
   // We need ref in this, because we are dealing
   // with JS setInterval to keep track of it and
   // stop it when needed
@@ -68,6 +68,21 @@ const CountdownTimer = () => {
     return deadline
   }
 
+  const isExpired = () => {
+    if (
+      days === '00' &&
+      hours === '00' &&
+      minutes === '00' &&
+      seconds === '00'
+    ) {
+      fn(true)
+      return true
+    }
+
+    fn(false)
+    return false
+  }
+
   // We can use useEffect so that when the component
   // mount the timer will start as soon as possible
 
@@ -79,32 +94,36 @@ const CountdownTimer = () => {
 
   return (
     <>
-      <div className="my-6 flex w-full flex-wrap justify-between rounded-lg bg-white/30 text-center">
-        <div className="w-1/2 p-4 sm:w-1/4">
-          <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
-            {days}
-          </h2>
-          <p className="text-2xl font-medium text-white">Days</p>
+      {isExpired ? (
+        <div className="py-10"></div>
+      ) : (
+        <div className="my-6 flex w-full flex-wrap justify-between rounded-lg bg-white/30 text-center">
+          <div className="w-1/2 p-4 sm:w-1/4">
+            <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
+              {days}
+            </h2>
+            <p className="text-2xl font-medium text-white">Days</p>
+          </div>
+          <div className="w-1/2 p-4 sm:w-1/4">
+            <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
+              {hours}
+            </h2>
+            <p className="text-2xl font-medium text-white">Hours</p>
+          </div>
+          <div className="w-1/2 p-4 sm:w-1/4">
+            <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
+              {minutes}
+            </h2>
+            <p className="text-2xl font-medium text-white">Minutes</p>
+          </div>
+          <div className="w-1/2 p-4 sm:w-1/4">
+            <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
+              {seconds}
+            </h2>
+            <p className="text-2xl font-medium text-white">Seconds</p>
+          </div>
         </div>
-        <div className="w-1/2 p-4 sm:w-1/4">
-          <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
-            {hours}
-          </h2>
-          <p className="text-2xl font-medium text-white">Hours</p>
-        </div>
-        <div className="w-1/2 p-4 sm:w-1/4">
-          <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
-            {minutes}
-          </h2>
-          <p className="text-2xl font-medium text-white">Minutes</p>
-        </div>
-        <div className="w-1/2 p-4 sm:w-1/4">
-          <h2 className="title-font text-6xl font-bold text-v-yellow sm:text-4xl">
-            {seconds}
-          </h2>
-          <p className="text-2xl font-medium text-white">Seconds</p>
-        </div>
-      </div>
+      )}
     </>
   )
 }

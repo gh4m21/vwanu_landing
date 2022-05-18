@@ -1,8 +1,10 @@
+import React, { useState } from 'react'
 import Head from 'next/head'
 import CountdownTimer from '../components/CountdownTimer'
 import ModalSubscribers from '../components/ModalSubscribers'
 
 const Home = () => {
+  const [isExpired, setIsExpired] = useState(true)
   return (
     <div
       style={{
@@ -29,10 +31,16 @@ const Home = () => {
                   src="/Asset_3.png"
                 />
               </div>
-              <p className="text-center text-3xl font-bold text-v-yellow md:text-5xl lg:text-4xl xl:text-right xl:text-5xl">
-                We are Launching Soon
-              </p>
-              <CountdownTimer />
+              {isExpired ? (
+                <p className="text-center text-3xl font-bold text-v-yellow md:text-5xl lg:text-4xl xl:text-right xl:text-5xl">
+                  Welcome to Vwanu
+                </p>
+              ) : (
+                <p className="text-center text-3xl font-bold text-v-yellow md:text-5xl lg:text-4xl xl:text-right xl:text-5xl">
+                  We are Launching Soon
+                </p>
+              )}
+              <CountdownTimer fn={setIsExpired} />
               <p className="pb-6 text-3xl  text-v-yellow md:text-5xl lg:text-4xl xl:text-4xl">
                 join the waiting list
               </p>
